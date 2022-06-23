@@ -34,11 +34,6 @@ public class Media {
     private LocalDateTime created;
     private LocalDateTime updated;
 
-    @PreUpdate
-    public void setUpdated(){
-        updated = LocalDateTime.now();
-    }
-
     @Override
     public String toString() {
         return "Media{" +
