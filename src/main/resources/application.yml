@@ -6,10 +6,18 @@ server:
   port: 8080
   ssl:
     enabled: false
+
 spring:
-  mvc:
-    pathmatch:
-      matching-strategy: ant-path-matcher
+  datasource:
+    password: pw123
+    url: "jdbc:postgresql://postgresql.postgres.svc.cluster.local:5432/localmovies"
+    username: localmovies
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    properties.hibernate.jdbc.lob.non_contextual_creation: true
+    show-sql: false
 
 opentracing:
   jaeger:
