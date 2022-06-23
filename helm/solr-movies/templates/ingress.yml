@@ -18,12 +18,14 @@ spec:
       http:
         paths:
          - path: /
+           pathType: ImplementationSpecific
            backend:
              service:
                name: solr-movies
                port:
                  name: http
          - path: /actuator
+           pathType: ImplementationSpecific
            backend:
              service:
                name: nowhere
