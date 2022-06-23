@@ -15,6 +15,8 @@ import org.apache.solr.common.SolrInputDocument;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.stream.StreamSupport;
+
 @Slf4j
 @Component
 @AllArgsConstructor
@@ -34,7 +36,7 @@ public class MovieIndexer {
                 .withHttpClient(httpClient)
                 .build();
 
-        mediaRepository.streamAll()
+        StreamSupport.stream(mediaRepository.findAll().spliterator(), false)
                 .map(this::mediaToSolrInputDocument)
                 .forEach(inputDocument -> {
                     try {
